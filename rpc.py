@@ -1,6 +1,6 @@
+import inspect
 import json
 import socket
-import inspect
 from threading import Thread
 
 SIZE = 1024
@@ -97,7 +97,7 @@ class RPCClient:
         self.__sock = None
         self.__address = (host, port)
 
-    def isConnected(self):
+    def is_connected(self):
         try:
             self.__sock.sendall(b'test')
             self.__sock.recv(SIZE)
@@ -121,14 +121,14 @@ class RPCClient:
             pass
 
     def __getattr__(self, __name: str):
-        def excecute(*args, **kwargs):
+        def execute(*args, **kwargs):
             self.__sock.sendall(json.dumps((__name, args, kwargs)).encode())
 
             response = json.loads(self.__sock.recv(SIZE).decode())
 
             return response
 
-        return excecute
+        return execute
 
     def __del__(self):
         try:
