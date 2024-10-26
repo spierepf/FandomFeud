@@ -2,9 +2,11 @@ import inspect
 import json
 import socket
 from threading import Thread
+import logging
 
 SIZE = 1024
-
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 class RPCServer:
 
@@ -15,9 +17,9 @@ class RPCServer:
         self._methods = {}
 
     def help(self) -> None:
-        print('REGISTERED METHODS:')
+        logging.info('REGISTERED METHODS:')
         for method in self._methods.items():
-            print('\t', method)
+            logging.info('\t', method)
 
     '''
 
@@ -54,15 +56,21 @@ class RPCServer:
     '''
 
     def __handle__(self, client: socket.socket, address: tuple):
-        print(f'Managing requests from {address}.')
+        logging.info(f'Managing requests from {address}.')
         while True:
             try:
-                functionName, args, kwargs = json.loads(client.recv(SIZE).decode())
+                decode = client.recv(SIZE).decode()
+                logging.info(f"Received request: {decode}")
+                if decode == 'test':
+                    client.sendall("success".encode())
+                    continue
+                functionName, args, kwargs = json.loads(decode)
             except:
-                print(f'! Client {address} disconnected.')
+                logging.exception(f"While handling request: {decode}")
+                logging.info(f'! Client {address} disconnected.')
                 break
             # Showing request Type
-            print(f'> {address} : {functionName}({args})')
+            logging.info(f'> {address} : {functionName}({args})')
 
             try:
                 response = self._methods[functionName](*args, **kwargs)
@@ -72,7 +80,7 @@ class RPCServer:
             else:
                 client.sendall(json.dumps(response).encode())
 
-        print(f'Completed request from {address}.')
+        logging.info(f'Completed request from {address}.')
         client.close()
 
     def run(self) -> None:
@@ -80,7 +88,7 @@ class RPCServer:
             sock.bind(self.address)
             sock.listen()
 
-            print(f'+ Server {self.address} running')
+            logging.info(f'+ Server {self.address} running')
             while True:
                 try:
                     client, address = sock.accept()
@@ -88,7 +96,7 @@ class RPCServer:
                     Thread(target=self.__handle__, args=[client, address]).start()
 
                 except KeyboardInterrupt:
-                    print(f'- Server {self.address} interrupted')
+                    logging.info(f'- Server {self.address} interrupted')
                     break
 
 
@@ -99,10 +107,11 @@ class RPCClient:
 
     def is_connected(self):
         try:
+            logging.info("Checking connection")
             self.__sock.sendall(b'test')
-            self.__sock.recv(SIZE)
-            return True
-
+            success = 'success' == self.__sock.recv(SIZE).decode()
+            logging.info(f"Connection status: {success}")
+            return success
         except:
             return False
 
@@ -111,7 +120,7 @@ class RPCClient:
             self.__sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.__sock.connect(self.__address)
         except EOFError as e:
-            print(e)
+            logging.info(e)
             raise Exception('Client was not able to connect.')
 
     def disconnect(self):
@@ -122,9 +131,11 @@ class RPCClient:
 
     def __getattr__(self, __name: str):
         def execute(*args, **kwargs):
+            logger.info(f"Sending {json.dumps((__name, args, kwargs)).encode()}")
             self.__sock.sendall(json.dumps((__name, args, kwargs)).encode())
-
-            response = json.loads(self.__sock.recv(SIZE).decode())
+            decode = self.__sock.recv(SIZE).decode()
+            logger.info(f"Received {decode}")
+            response = json.loads(decode)
 
             return response
 

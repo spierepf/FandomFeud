@@ -106,6 +106,7 @@ class ScoreboardView:
         self.draw_score(self.model.get_pot(), 0, -24)  # pot
 
     def draw(self):
+        self.surface.fill((0,0,0))
         self.draw_borders()
         self.draw_scores()
         self.draw_answer_grid()
@@ -113,6 +114,12 @@ class ScoreboardView:
             self.model.clear_newly_revealed()
             BELL_SOUND.play()
 
-        if self.model.get_strike() > 0:
-            self.model.clear_strike()
-            BUZZER_SOUND.play()
+        if self.model.get_strike() is not None:
+            if self.model.get_strike_start_time() is None:
+                self.model.set_strike_start_time(pygame.time.get_ticks())
+                BUZZER_SOUND.play()
+            elif pygame.time.get_ticks() - self.model.get_strike_start_time() < int(BUZZER_SOUND.get_length() * 1000):
+                self.draw_x(self.model.get_strike())
+            else:
+                self.model.clear_strike()
+

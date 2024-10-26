@@ -21,15 +21,24 @@ class ScoreboardModel:
         self._newly_revealed = False
         self._revealed = []
         self._answers = []
-        self._strike = 0
+        self._strike = None
+        self._strike_start_time = None
 
     @synchronized
     def get_score(self, side):
         return self._scores[side.value]
 
     @synchronized
+    def set_score(self, side, score):
+        self._scores[side] = score
+
+    @synchronized
     def get_pot(self):
         return self._pot
+
+    @synchronized
+    def set_pot(self, score):
+        self._pot = score
 
     @synchronized
     def get_answer_count(self):
@@ -48,7 +57,7 @@ class ScoreboardModel:
         return self._answers[i][1]
 
     @synchronized
-    def new_round(self, answers):
+    def begin_round(self, answers):
         self._revealed = [False for _ in answers]
         self._answers = answers
 
@@ -56,11 +65,6 @@ class ScoreboardModel:
     def reveal_answer(self, i):
         self._newly_revealed |= not self._revealed[i]
         self._revealed[i] = True
-
-    @synchronized
-    def reveal_answer_and_add_score_to_pot(self, i):
-        self.reveal_answer(i)
-        self._pot += self.get_answer_score(i)
 
     @synchronized
     def is_newly_revealed(self):
@@ -79,5 +83,14 @@ class ScoreboardModel:
         return self._strike
 
     @synchronized
+    def set_strike_start_time(self, strike_start_time):
+        self._strike_start_time = strike_start_time
+
+    @synchronized
+    def get_strike_start_time(self):
+        return self._strike_start_time
+
+    @synchronized
     def clear_strike(self):
-        self._strike = 0
+        self._strike = None
+        self._strike_start_time = None

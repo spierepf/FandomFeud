@@ -20,6 +20,15 @@ class ClientUI:
     def run(self):
         self.mainwindow.mainloop()
 
+    def connect_to_server(self):
+        pass
+
+    def begin_round(self):
+        pass
+
+    def commit(self):
+        pass
+
 
 if __name__ == "__main__":
     app = ClientUI()
