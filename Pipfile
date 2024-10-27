@@ -8,6 +8,7 @@ pygame = "*"
 pygubu = "*"
 
 [dev-packages]
+pygubu-designer = "*"
 
 [requires]
 python_version = "3.12"

@@ -264,17 +264,6 @@
                   </object>
                 </child>
                 <child>
-                  <object class="ttk.Radiobutton" id="failed_steal_radiobutton" named="True">
-                    <property name="text" translatable="yes">Failed Steal</property>
-                    <property name="value">failed_steal</property>
-                    <property name="variable">string:event_var</property>
-                    <layout manager="grid">
-                      <property name="column">3</property>
-                      <property name="row">0</property>
-                    </layout>
-                  </object>
-                </child>
-                <child>
                   <object class="ttk.Radiobutton" id="strike_1_radiobutton" named="True">
                     <property name="text" translatable="yes">Strike 1</property>
                     <property name="value">strike_1</property>

@@ -18,12 +18,12 @@ server.registerInstance(model)
 server_thread = Thread(target = server.run, daemon=True)
 server_thread.start()
 
-FULLSCREEN = False
+FULLSCREEN = True
 
 # Set up the drawing window
 if FULLSCREEN:
     infoObject = pygame.display.Info()
-    SCREEN = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    SCREEN = pygame.display.set_mode((0, 0), pygame.FULLSCREEN, display=1)
     size_x = infoObject.current_w
     size_y = infoObject.current_h
 else:
