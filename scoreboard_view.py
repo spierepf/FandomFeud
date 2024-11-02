@@ -6,7 +6,10 @@ from side import Side
 
 
 class ScoreboardView:
-    def __init__(self, model, surface):
+    def __init__(self, model, surface, fullscreen):
+        self.bg = pygame.image.load("FamilyFeud_PurpleBG.jpg")
+        if fullscreen:
+            self.bg = pygame.transform.scale_by(self.bg, 2)
         self.model = model
         self.surface = surface
         self.UNIT = min(surface.get_width() / 100, surface.get_height() / 75)
@@ -27,8 +30,8 @@ class ScoreboardView:
 
     def draw_borders(self):
         # Main ellipse
-        pygame.draw.ellipse(self.surface, BORDER_COLOUR, RectBuilder(self.surface).size(85, 61).done())
-        pygame.draw.ellipse(self.surface, BACKGROUND_COLOUR, RectBuilder(self.surface).size(84, 60).done())
+        pygame.draw.ellipse(self.surface, BORDER_COLOUR, RectBuilder(self.surface).size(85, 61).done(), int(self.UNIT))
+        # pygame.draw.ellipse(self.surface, BACKGROUND_COLOUR, RectBuilder(self.surface).size(84, 60).done())
 
         # Left score
         pygame.draw.rect(self.surface, BORDER_COLOUR, RectBuilder(self.surface).size(15, 10).translate(-41, 0).done(),
@@ -104,7 +107,7 @@ class ScoreboardView:
         self.draw_score(self.model.get_pot(), 0, -24)  # pot
 
     def draw(self):
-        self.surface.fill((0,0,0))
+        self.surface.blit(self.bg, (0, 0))
         self.draw_borders()
         self.draw_scores()
         self.draw_answer_grid()

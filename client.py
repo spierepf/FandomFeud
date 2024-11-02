@@ -101,6 +101,7 @@ class Client(ClientUI):
         except Exception as e:
             logger.exception(f"While connecting to {host} on port {port}")
             messagebox.showerror('Connection Error', str(e))
+        self.disable_all(self.builder.get_object("connect_frame"))
 
     def begin_round(self):
         with filedialog.askopenfile(filetypes=[('JSON', '.json')], defaultextension='.json') as load_file:

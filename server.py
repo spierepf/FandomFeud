@@ -18,7 +18,10 @@ server.registerInstance(model)
 server_thread = Thread(target = server.run, daemon=True)
 server_thread.start()
 
-FULLSCREEN = True
+FULLSCREEN = False
+if len(pygame.display.get_desktop_sizes()) == 1:
+    FULLSCREEN = False
+
 
 # Set up the drawing window
 if FULLSCREEN:
@@ -34,7 +37,7 @@ else:
 # Run until the user asks to quit
 running = True
 
-view = ScoreboardView(model, SCREEN)
+view = ScoreboardView(model, SCREEN, FULLSCREEN)
 
 while running:
 
