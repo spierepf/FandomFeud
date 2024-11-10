@@ -1,6 +1,7 @@
 import pygame
 
-from config import BORDER_COLOUR, BACKGROUND_COLOUR, TEXT_BACKGROUND_COLOUR, BELL_SOUND, BUZZER_SOUND, DUPLICATE_SOUND
+from config import BORDER_COLOUR, BACKGROUND_COLOUR, TEXT_BACKGROUND_COLOUR, BELL_SOUND, BUZZER_SOUND, DUPLICATE_SOUND, \
+    POINTS_SOUND, NO_POINTS_SOUND, REVEAL_SOUND
 from rect_builder import RectBuilder
 from side import Side
 
@@ -54,6 +55,18 @@ class FastMoneyView:
         if self.model.get_play_duplicate_sound():
             self.model.set_play_duplicate_sound(False)
             DUPLICATE_SOUND.play()
+
+        if self.model.get_play_reveal_sound():
+            self.model.set_play_reveal_sound(False)
+            REVEAL_SOUND.play()
+
+        if self.model.get_play_points_sound():
+            self.model.set_play_points_sound(False)
+            POINTS_SOUND.play()
+
+        if self.model.get_play_no_points_sound():
+            self.model.set_play_no_points_sound(False)
+            NO_POINTS_SOUND.play()
 
         total_score = 0
         for col in range(2):

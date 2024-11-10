@@ -161,211 +161,6 @@
                   <property name="side">top</property>
                 </layout>
                 <child>
-                  <object class="ttk.Frame" id="frame3">
-                    <property name="height">200</property>
-                    <property name="width">200</property>
-                    <layout manager="grid">
-                      <property name="column">0</property>
-                      <property name="row">0</property>
-                    </layout>
-                    <child>
-                      <object class="ttk.Entry" id="answer_0_entry" named="True">
-                        <property name="textvariable">string:answer_0_entry_var</property>
-                        <layout manager="grid">
-                          <property name="column">0</property>
-                          <property name="row">0</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Radiobutton" id="radiobutton2">
-                        <property name="value">reveal_score_0</property>
-                        <property name="variable">string:event_var</property>
-                        <layout manager="grid">
-                          <property name="column">3</property>
-                          <property name="row">0</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Entry" id="score_0_entry" named="True">
-                        <property name="textvariable">int:score_0_entry_var</property>
-                        <property name="width">3</property>
-                        <layout manager="grid">
-                          <property name="column">2</property>
-                          <property name="row">0</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Radiobutton" id="radiobutton3">
-                        <property name="value">reveal_answer_1</property>
-                        <property name="variable">string:event_var</property>
-                        <layout manager="grid">
-                          <property name="column">1</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Entry" id="answer_1_entry" named="True">
-                        <property name="textvariable">string:answer_1_entry_var</property>
-                        <layout manager="grid">
-                          <property name="column">0</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Radiobutton" id="radiobutton4">
-                        <property name="value">reveal_score_1</property>
-                        <property name="variable">string:event_var</property>
-                        <layout manager="grid">
-                          <property name="column">3</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Entry" id="score_1_entry" named="True">
-                        <property name="textvariable">int:score_1_entry_var</property>
-                        <property name="width">3</property>
-                        <layout manager="grid">
-                          <property name="column">2</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Radiobutton" id="radiobutton5">
-                        <property name="value">reveal_answer_2</property>
-                        <property name="variable">string:event_var</property>
-                        <layout manager="grid">
-                          <property name="column">1</property>
-                          <property name="row">2</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Entry" id="answer_2_entry" named="True">
-                        <property name="textvariable">string:answer_2_entry_var</property>
-                        <layout manager="grid">
-                          <property name="column">0</property>
-                          <property name="row">2</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Radiobutton" id="radiobutton6">
-                        <property name="value">reveal_score_2</property>
-                        <property name="variable">string:event_var</property>
-                        <layout manager="grid">
-                          <property name="column">3</property>
-                          <property name="row">2</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Entry" id="score_2_entry" named="True">
-                        <property name="textvariable">int:score_2_entry_var</property>
-                        <property name="width">3</property>
-                        <layout manager="grid">
-                          <property name="column">2</property>
-                          <property name="row">2</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Radiobutton" id="radiobutton7">
-                        <property name="value">reveal_answer_3</property>
-                        <property name="variable">string:event_var</property>
-                        <layout manager="grid">
-                          <property name="column">1</property>
-                          <property name="row">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Entry" id="answer_3_entry" named="True">
-                        <property name="textvariable">string:answer_3_entry_var</property>
-                        <layout manager="grid">
-                          <property name="column">0</property>
-                          <property name="row">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Radiobutton" id="radiobutton8">
-                        <property name="value">reveal_score_3</property>
-                        <property name="variable">string:event_var</property>
-                        <layout manager="grid">
-                          <property name="column">3</property>
-                          <property name="row">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Entry" id="score_3_entry" named="True">
-                        <property name="textvariable">int:score_3_entry_var</property>
-                        <property name="width">3</property>
-                        <layout manager="grid">
-                          <property name="column">2</property>
-                          <property name="row">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Radiobutton" id="radiobutton9">
-                        <property name="value">reveal_answer_4</property>
-                        <property name="variable">string:event_var</property>
-                        <layout manager="grid">
-                          <property name="column">1</property>
-                          <property name="row">4</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Entry" id="answer_4_entry" named="True">
-                        <property name="textvariable">string:answer_4_entry_var</property>
-                        <layout manager="grid">
-                          <property name="column">0</property>
-                          <property name="row">4</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Radiobutton" id="radiobutton10">
-                        <property name="value">reveal_score_4</property>
-                        <property name="variable">string:event_var</property>
-                        <layout manager="grid">
-                          <property name="column">3</property>
-                          <property name="row">4</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Entry" id="score_4_entry" named="True">
-                        <property name="textvariable">int:score_4_entry_var</property>
-                        <property name="width">3</property>
-                        <layout manager="grid">
-                          <property name="column">2</property>
-                          <property name="row">4</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Radiobutton" id="radiobutton1">
-                        <property name="value">reveal_answer_0</property>
-                        <property name="variable">string:event_var</property>
-                        <layout manager="grid">
-                          <property name="column">1</property>
-                          <property name="row">0</property>
-                        </layout>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
                   <object class="ttk.Frame" id="frame4">
                     <property name="height">200</property>
                     <property name="width">200</property>
@@ -565,6 +360,211 @@
                         <layout manager="grid">
                           <property name="column">2</property>
                           <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Frame" id="frame3">
+                    <property name="height">200</property>
+                    <property name="width">200</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="row">0</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Entry" id="answer_0_entry" named="True">
+                        <property name="textvariable">string:answer_0_entry_var</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="row">0</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Radiobutton" id="radiobutton2">
+                        <property name="value">reveal_score_0</property>
+                        <property name="variable">string:event_var</property>
+                        <layout manager="grid">
+                          <property name="column">3</property>
+                          <property name="row">0</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Entry" id="score_0_entry" named="True">
+                        <property name="textvariable">int:score_0_entry_var</property>
+                        <property name="width">3</property>
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="row">0</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Radiobutton" id="radiobutton3">
+                        <property name="value">reveal_answer_1</property>
+                        <property name="variable">string:event_var</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Entry" id="answer_1_entry" named="True">
+                        <property name="textvariable">string:answer_1_entry_var</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Radiobutton" id="radiobutton4">
+                        <property name="value">reveal_score_1</property>
+                        <property name="variable">string:event_var</property>
+                        <layout manager="grid">
+                          <property name="column">3</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Entry" id="score_1_entry" named="True">
+                        <property name="textvariable">int:score_1_entry_var</property>
+                        <property name="width">3</property>
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Radiobutton" id="radiobutton5">
+                        <property name="value">reveal_answer_2</property>
+                        <property name="variable">string:event_var</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="row">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Entry" id="answer_2_entry" named="True">
+                        <property name="textvariable">string:answer_2_entry_var</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="row">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Radiobutton" id="radiobutton6">
+                        <property name="value">reveal_score_2</property>
+                        <property name="variable">string:event_var</property>
+                        <layout manager="grid">
+                          <property name="column">3</property>
+                          <property name="row">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Entry" id="score_2_entry" named="True">
+                        <property name="textvariable">int:score_2_entry_var</property>
+                        <property name="width">3</property>
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="row">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Radiobutton" id="radiobutton7">
+                        <property name="value">reveal_answer_3</property>
+                        <property name="variable">string:event_var</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="row">3</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Entry" id="answer_3_entry" named="True">
+                        <property name="textvariable">string:answer_3_entry_var</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="row">3</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Radiobutton" id="radiobutton8">
+                        <property name="value">reveal_score_3</property>
+                        <property name="variable">string:event_var</property>
+                        <layout manager="grid">
+                          <property name="column">3</property>
+                          <property name="row">3</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Entry" id="score_3_entry" named="True">
+                        <property name="textvariable">int:score_3_entry_var</property>
+                        <property name="width">3</property>
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="row">3</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Radiobutton" id="radiobutton9">
+                        <property name="value">reveal_answer_4</property>
+                        <property name="variable">string:event_var</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Entry" id="answer_4_entry" named="True">
+                        <property name="textvariable">string:answer_4_entry_var</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Radiobutton" id="radiobutton10">
+                        <property name="value">reveal_score_4</property>
+                        <property name="variable">string:event_var</property>
+                        <layout manager="grid">
+                          <property name="column">3</property>
+                          <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Entry" id="score_4_entry" named="True">
+                        <property name="textvariable">int:score_4_entry_var</property>
+                        <property name="width">3</property>
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Radiobutton" id="radiobutton1">
+                        <property name="value">reveal_answer_0</property>
+                        <property name="variable">string:event_var</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="row">0</property>
                         </layout>
                       </object>
                     </child>

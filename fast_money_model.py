@@ -4,6 +4,9 @@ class FastMoneyModel:
         self.timer_end_time = None
         self.timer_start = False
         self.play_duplicate_sound = False
+        self.play_reveal_sound = False
+        self.play_points_sound = False
+        self.play_no_points_sound = False
         self.answer = [None] * 10
         self.score = [None] * 10
 
@@ -30,6 +33,24 @@ class FastMoneyModel:
 
     def set_play_duplicate_sound(self, play_duplicate_sound):
         self.play_duplicate_sound = play_duplicate_sound
+
+    def get_play_reveal_sound(self):
+        return self.play_reveal_sound
+
+    def set_play_reveal_sound(self, play_reveal_sound):
+        self.play_reveal_sound = play_reveal_sound
+
+    def get_play_points_sound(self):
+        return self.play_points_sound
+
+    def set_play_points_sound(self, play_points_sound):
+        self.play_points_sound = play_points_sound
+
+    def get_play_no_points_sound(self):
+        return self.play_no_points_sound
+
+    def set_play_no_points_sound(self, play_no_points_sound):
+        self.play_no_points_sound = play_no_points_sound
 
     def set_answer(self, index, answer):
         self.answer[index] = answer

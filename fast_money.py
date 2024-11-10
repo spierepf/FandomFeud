@@ -71,15 +71,23 @@ class FastMoneyClient(FastMoneyClientUI):
         match event:
             case event if event.startswith('reveal_answer_'):
                 i = int(event[-1])
-                next_event = f'reveal_score_{i}'
-                if self.builder.get_variable(f'answer_{i}_entry_var').get() is not None:
-                    self.model.set_answer(i, self.builder.get_variable(f'answer_{i}_entry_var').get())
+                answer = self.builder.get_variable(f'answer_{i}_entry_var').get()
+                if answer is not None:
+                    self.model.set_answer(i, answer)
+                    self.model.set_play_reveal_sound(True)
+                    next_event = f'reveal_score_{i}'
+
 
             case event if event.startswith('reveal_score_'):
                 i = int(event[-1])
                 next_event = f'reveal_answer_{(i+1)%10}'
-                if self.builder.get_variable(f'score_{i}_entry_var').get() is not None:
-                    self.model.set_score(i, self.builder.get_variable(f'score_{i}_entry_var').get())
+                score = self.builder.get_variable(f'score_{i}_entry_var').get()
+                if score is not None:
+                    self.model.set_score(i, score)
+                    if score > 0:
+                        self.model.set_play_points_sound(True)
+                    else:
+                        self.model.set_play_no_points_sound(True)
 
         self.builder.get_variable('event_var').set(next_event)
 
