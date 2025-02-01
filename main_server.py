@@ -39,7 +39,7 @@ else:
 # Run until the user asks to quit
 running = True
 
-view = ScoreboardView(model, SCREEN, FULLSCREEN)
+view = ScoreboardView(model, SCREEN)
 
 while running:
 

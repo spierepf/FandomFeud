@@ -39,7 +39,7 @@ else:
 # Run until the user asks to quit
 running = True
 
-view = FastMoneyView(model, SCREEN, FULLSCREEN)
+view = FastMoneyView(model, SCREEN)
 
 while running:
 

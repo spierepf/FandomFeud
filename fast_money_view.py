@@ -1,23 +1,14 @@
 import pygame
 
+from pygame_view import PygameView
 from config import BORDER_COLOUR, BACKGROUND_COLOUR, TEXT_BACKGROUND_COLOUR, BELL_SOUND, BUZZER_SOUND, DUPLICATE_SOUND, \
     POINTS_SOUND, NO_POINTS_SOUND, REVEAL_SOUND
 from rect_builder import RectBuilder
-from side import Side
 
 
-class FastMoneyView:
-    def __init__(self, model, surface, fullscreen):
-        self.bg = pygame.image.load("FamilyFeud_PurpleBG.jpg")
-        if fullscreen:
-            self.bg = pygame.transform.scale_by(self.bg, 2)
-        self.model = model
-        self.surface = surface
-        self.UNIT = min(surface.get_width() / 100, surface.get_height() / 75)
-        self.inner_border_width = 61
-        self.inner_border_height = 38
-        self.box_width = (self.inner_border_width - 2) / 2
-        self.box_height = (self.inner_border_height - 2) / 4
+class FastMoneyView(PygameView):
+    def __init__(self, model, surface):
+        super().__init__(model, surface)
 
     def draw_text(self, text, x, y, height, width=None, font_name="fonts/NimbusSans-Regular.otf"):
         font = pygame.font.Font(font_name, int(self.UNIT * height))
@@ -30,7 +21,7 @@ class FastMoneyView:
         self.surface.blit(foreground, RectBuilder(self.surface, foreground.get_rect()).translate(x, y).unscaled_translate(0, (font.get_linesize() - font.get_height()) / 2).done())
 
     def draw(self):
-        self.surface.blit(self.bg, (0, 0))
+        self.draw_background()
 
         pygame.draw.rect(self.surface, BORDER_COLOUR, RectBuilder(self.surface).size(88, 66).done(),
                          int(self.UNIT), int(self.UNIT))
