@@ -1,4 +1,5 @@
 # Simple pygame program
+import os
 
 # Import and initialize the pygame library
 import pygame
@@ -18,15 +19,16 @@ server.registerInstance(model)
 server_thread = Thread(target = server.run, daemon=True)
 server_thread.start()
 
-FULLSCREEN = False
+FULLSCREEN = True
 if len(pygame.display.get_desktop_sizes()) == 1:
     FULLSCREEN = False
 
 
 # Set up the drawing window
 if FULLSCREEN:
+    os.environ['SDL_VIDEO_CENTERED'] = '1'
     infoObject = pygame.display.Info()
-    SCREEN = pygame.display.set_mode((0, 0), pygame.FULLSCREEN, display=1)
+    SCREEN = pygame.display.set_mode((0, 0), pygame.NOFRAME, display=1)
     size_x = infoObject.current_w
     size_y = infoObject.current_h
 else:
