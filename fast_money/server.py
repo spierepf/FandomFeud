@@ -10,7 +10,7 @@ pygame.mixer.init()
 
 from fast_money_model import FastMoneyModel
 from fast_money_view import FastMoneyView
-from rpc import RPCServer
+from core.rpc import RPCServer
 from threading import Thread
 
 server = RPCServer()

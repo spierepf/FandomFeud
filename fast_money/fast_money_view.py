@@ -3,10 +3,10 @@ import pygame
 from os.path import dirname, abspath, join
 import sys
 sys.path.append(abspath(join(dirname(__file__), '..')))
-from pygame_view import PygameView
-from config import BORDER_COLOUR, BACKGROUND_COLOUR, TEXT_BACKGROUND_COLOUR, BELL_SOUND, BUZZER_SOUND, DUPLICATE_SOUND, \
+from core.pygame_view import PygameView
+from core.config import BORDER_COLOUR, BACKGROUND_COLOUR, TEXT_BACKGROUND_COLOUR, BELL_SOUND, BUZZER_SOUND, DUPLICATE_SOUND, \
     POINTS_SOUND, NO_POINTS_SOUND, REVEAL_SOUND
-from rect_builder import RectBuilder
+from core.rect_builder import RectBuilder
 
 
 class FastMoneyView(PygameView):

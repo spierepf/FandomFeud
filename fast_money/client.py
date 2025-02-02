@@ -13,7 +13,7 @@ from os.path import dirname, abspath, join
 import sys
 sys.path.append(abspath(join(dirname(__file__), '..')))
 from core.rpc import RPCClient
-from side import Side
+from core.side import Side
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)

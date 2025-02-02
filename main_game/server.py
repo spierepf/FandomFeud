@@ -10,7 +10,7 @@ pygame.mixer.init()
 
 from scoreboard_model import ScoreboardModel
 from scoreboard_view import ScoreboardView
-from rpc import RPCServer
+from core.rpc import RPCServer
 from threading import Thread
 
 server = RPCServer()
