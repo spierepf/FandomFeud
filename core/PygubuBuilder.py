@@ -16,6 +16,9 @@ class PackLayoutManager:
         layout = ET.SubElement(object, "layout", {'manager': 'pack'})
         ET.SubElement(layout, "property", {"name": "side"}).text = "top"
 
+    def next_row(self):
+        pass
+
 
 class GridLayoutManager:
     def __init__(self):
@@ -27,6 +30,10 @@ class GridLayoutManager:
         ET.SubElement(layout, "property", {"name": "column"}).text = str(self.col)
         ET.SubElement(layout, "property", {"name": "row"}).text = str(self.row)
         self.col += 1
+
+    def next_row(self):
+        self.col = 0
+        self.row += 1
 
 
 class ObjectBuilder:
@@ -67,12 +74,14 @@ class ObjectBuilder:
         self.layout(object)
         return self
 
-    def add_entry(self, variable, text, justify=None, object_id=None):
+    def add_entry(self, variable, text, justify=None, width=None, object_id=None):
         object = self.initialize_object("ttk.Entry", object_id)
         ET.SubElement(object, "property", {"name": "text", "translatable": "yes"}).text = str(text)
         ET.SubElement(object, "property", {"name": "textvariable"}).text = str(variable)
         if justify:
             ET.SubElement(object, "property", {"name": "justify"}).text = str(justify)
+        if width:
+            ET.SubElement(object, "property", {"name": "width"}).text = str(width)
         self.layout(object)
         return self
 
@@ -89,6 +98,11 @@ class ObjectBuilder:
         ET.SubElement(object, "property", {"name": "value"}).text = str(value)
         ET.SubElement(object, "property", {"name": "variable"}).text = str(variable)
         self.layout(object)
+        return self
+
+    def next_row(self):
+        if self.layout_manager:
+            self.layout_manager.next_row()
         return self
 
     def end_frame(self):
