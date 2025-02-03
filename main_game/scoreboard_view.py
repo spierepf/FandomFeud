@@ -8,19 +8,56 @@ from core.config import BORDER_COLOUR, BACKGROUND_COLOUR, TEXT_BACKGROUND_COLOUR
 from core.rect_builder import RectBuilder
 from core.side import Side
 
+class LocalRect(pygame.Rect):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def resize(self, new_width, new_height):
+        return self.inflate(new_width - self.width, new_height - self.height)
+
+    def resize_ip(self, new_width, new_height):
+        self.inflate_ip(new_width - self.width, new_height - self.height)
+
+    def columns(self, n):
+        width = self.width / n
+        for i in range(n):
+            yield LocalRect(self.left + i*width, self.top, width, self.height)
+
+    def rows(self, n):
+        height = self.height / n
+        for i in range(n):
+            yield LocalRect(self.left, self.top + i*height, self.width, height)
+
+    def split_h(self, width):
+        if width < 0:
+            return (
+                LocalRect(self.left, self.top, self.width + width, self.height),
+                LocalRect(self.left + (self.width + width), self.top, -width, self.height)
+            )
+        else:
+            return (
+                LocalRect(self.left, self.top, width, self.height),
+                LocalRect(self.left + width, self.top, self.width-width, self.height)
+            )
+
 class ScoreboardView(PygameView):
     def __init__(self, model, surface):
         super().__init__(model, surface)
+        self.inner_border_width = 61
+        self.inner_border_height = 38
+        self.box_width = (self.inner_border_width - 2) / 2
+        self.box_height = (self.inner_border_height - 2) / 4
 
-    def draw_text(self, text, x, y, height, width=None, font_name="fonts/NimbusSans-Regular.otf"):
-        font = pygame.font.Font(font_name, int(self.UNIT * height))
+    def draw_text(self, text, rect, font_name="fonts/NimbusSans-Regular.otf"):
+        font = pygame.font.Font(font_name, int(rect.height))
         shadow = font.render(text, True, "black")
         foreground = font.render(text, True, "white")
-        if width is not None and width * self.UNIT < shadow.get_width():
-            shadow = pygame.transform.scale(shadow, (width * self.UNIT, shadow.get_height()))
-            foreground = pygame.transform.scale(foreground, (width * self.UNIT, shadow.get_height()))
-        self.surface.blit(shadow, RectBuilder(self.surface, shadow.get_rect()).translate(x + 0.3, y + 0.3).unscaled_translate(0, (font.get_linesize() - font.get_height()) / 2).done())
-        self.surface.blit(foreground, RectBuilder(self.surface, foreground.get_rect()).translate(x, y).unscaled_translate(0, (font.get_linesize() - font.get_height()) / 2).done())
+        if rect.width < shadow.get_width():
+            shadow = pygame.transform.scale(shadow, (rect.width, shadow.get_height()))
+            foreground = pygame.transform.scale(foreground, (rect.width, shadow.get_height()))
+        tmp = rect.resize(foreground.get_width(), foreground.get_height()).move(0, (font.get_linesize() - font.get_height()) / 2)
+        self.surface.blit(shadow, tmp.move(int(self.UNIT*0.3), int(self.UNIT*0.3)))
+        self.surface.blit(foreground, tmp)
 
     def draw_borders(self):
         # Main ellipse
@@ -46,42 +83,36 @@ class ScoreboardView(PygameView):
                          int(self.UNIT))
 
     def draw_score(self, score, x, y):
-        pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR,
-                         RectBuilder(self.surface).size(13, 8).translate(x, y).done(), 0, int(self.UNIT))
-        self.draw_text(str(score), x, y, 6.4)
+        rect = LocalRect(self.surface.get_rect().move(x * self.UNIT, y * self.UNIT)).resize(self.UNIT * 13, self.UNIT * 8)
+        pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR, rect, 0, int(self.UNIT))
+        self.draw_text(str(score), rect.resize(rect.width, int(6.4 * self.UNIT)))
 
-    def draw_hidden_answer(self, x, y, i):
-        pygame.draw.ellipse(self.surface, TEXT_BACKGROUND_COLOUR + '4',
-                            RectBuilder(self.surface).size(24, 8).translate(x, y).size(8, 6).done())
-        self.draw_text(str(i+1), x, y, 6.4, 24, "fonts/NimbusSans-Bold.otf")
+    def draw_hidden_answer(self, cell, i):
+        pygame.draw.ellipse(self.surface, TEXT_BACKGROUND_COLOUR + '4', cell.resize(8 * self.UNIT, 6 * self.UNIT))
+        self.draw_text(str(i + 1), cell.resize(24 * self.UNIT, 6.4 * self.UNIT), "fonts/NimbusSans-Bold.otf")
 
-    def draw_revealed_answer(self, x, y, answer_text, answer_score):
-        score_width = 5
-        answer_width = self.box_width - 1 - score_width
-        answer_height = self.box_height - 1
-        pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR + '4',
-                         RectBuilder(self.surface).size(answer_width, answer_height).translate(x-score_width/2, y).done(), 0,
-                         int(self.UNIT / 2))
-        pygame.draw.rect(self.surface, 'white',
-                         RectBuilder(self.surface).size(answer_width, answer_height).translate(x-score_width/2, y).done(),
-                         int(self.UNIT / 5), int(self.UNIT / 2))
-        self.draw_text(answer_text.upper(), x - score_width/2, y,  3.5, answer_width-1, "fonts/NimbusSans-Bold.otf")
-        self.draw_text(str(answer_score), x + ((self.box_width-1)/2) - (score_width/2), y, 4, score_width,"fonts/NimbusSansNarrow-Bold.otf")
+    def draw_revealed_answer(self, cell, answer_text, answer_score):
+        tmp = cell.inflate(-self.UNIT, -self.UNIT)
+        answer_rect, score_rect = tmp.split_h(-5*self.UNIT)
+        pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR + '4', answer_rect, 0, int(self.UNIT / 2))
+        pygame.draw.rect(self.surface, 'white', answer_rect, int(self.UNIT / 5), int(self.UNIT / 2))
+        self.draw_text(answer_text.upper(), answer_rect.resize(answer_rect.width - self.UNIT, int(self.UNIT * 3.5)), "fonts/NimbusSans-Bold.otf")
+        self.draw_text(str(answer_score), score_rect.resize(score_rect.width, self.UNIT * 4), "fonts/NimbusSansNarrow-Bold.otf")
 
     def draw_answer_grid(self):
-        for col in range(2):
-            for row in range(4):
-                x = (col - 0.5) * self.box_width
-                y = (row - 1.5) * self.box_height
-                i = col * 4 + row
-                pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR,
-                                 RectBuilder(self.surface).size(self.box_width-0.5, self.box_height-0.5).translate(x, y).done(),
-                                 0, int(self.UNIT / 2))
+        area = LocalRect(self.surface.get_rect())
+        area.resize_ip(self.UNIT * (self.inner_border_width - 2), self.UNIT * (self.inner_border_height - 2))
+
+        i = 0
+        for column in area.columns(2):
+            for cell in column.rows(4):
+                pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR, cell.inflate(-self.UNIT/2, -self.UNIT/2), 0, int(self.UNIT/2))
                 if i < self.model.get_answer_count():
                     if self.model.is_revealed_answer(i):
-                        self.draw_revealed_answer(x, y, self.model.get_answer_text(i), self.model.get_answer_score(i))
+                        self.draw_revealed_answer(cell, self.model.get_answer_text(i), self.model.get_answer_score(i))
                     else:
-                        self.draw_hidden_answer(x, y, i)
+                        self.draw_hidden_answer(cell, i)
+                i += 1
 
     def draw_x(self, count):
         for i in range(count):
