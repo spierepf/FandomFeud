@@ -4,40 +4,10 @@ from os.path import dirname, abspath, join
 import sys
 sys.path.append(abspath(join(dirname(__file__), '..')))
 from core.pygame_view import PygameView
+from core.local_rect import LocalRect
 from core.config import BORDER_COLOUR, BACKGROUND_COLOUR, TEXT_BACKGROUND_COLOUR, BELL_SOUND, BUZZER_SOUND
 from core.side import Side
 
-class LocalRect(pygame.Rect):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-    def resize(self, new_width, new_height):
-        return self.inflate(new_width - self.width, new_height - self.height)
-
-    def resize_ip(self, new_width, new_height):
-        self.inflate_ip(new_width - self.width, new_height - self.height)
-
-    def columns(self, n):
-        width = self.width / n
-        for i in range(n):
-            yield LocalRect(self.left + i*width, self.top, width, self.height)
-
-    def rows(self, n):
-        height = self.height / n
-        for i in range(n):
-            yield LocalRect(self.left, self.top + i*height, self.width, height)
-
-    def split_h(self, width):
-        if width < 0:
-            return (
-                LocalRect(self.left, self.top, self.width + width, self.height),
-                LocalRect(self.left + (self.width + width), self.top, -width, self.height)
-            )
-        else:
-            return (
-                LocalRect(self.left, self.top, width, self.height),
-                LocalRect(self.left + width, self.top, self.width-width, self.height)
-            )
 
 class ScoreboardView(PygameView):
     def __init__(self, model, surface):
@@ -46,17 +16,6 @@ class ScoreboardView(PygameView):
         self.inner_border_height = 38
         self.box_width = (self.inner_border_width - 2) / 2
         self.box_height = (self.inner_border_height - 2) / 4
-
-    def draw_text(self, text, rect, font_name="fonts/NimbusSans-Regular.otf"):
-        font = pygame.font.Font(font_name, int(rect.height))
-        shadow = font.render(text, True, "black")
-        foreground = font.render(text, True, "white")
-        if rect.width < shadow.get_width():
-            shadow = pygame.transform.scale(shadow, (rect.width, shadow.get_height()))
-            foreground = pygame.transform.scale(foreground, (rect.width, shadow.get_height()))
-        tmp = rect.resize(foreground.get_width(), foreground.get_height()).move(0, (font.get_linesize() - font.get_height()) / 2)
-        self.surface.blit(shadow, tmp.move(int(self.UNIT*0.3), int(self.UNIT*0.3)))
-        self.surface.blit(foreground, tmp)
 
     def draw_borders(self):
         # Main ellipse
