@@ -4,32 +4,72 @@ from os.path import dirname, abspath, join
 import sys
 sys.path.append(abspath(join(dirname(__file__), '..')))
 from core.pygame_view import PygameView
-from core.config import BORDER_COLOUR, BACKGROUND_COLOUR, TEXT_BACKGROUND_COLOUR, BELL_SOUND, BUZZER_SOUND, DUPLICATE_SOUND, \
-    POINTS_SOUND, NO_POINTS_SOUND, REVEAL_SOUND
-from core.rect_builder import RectBuilder
+from core.config import BORDER_COLOUR, TEXT_BACKGROUND_COLOUR, DUPLICATE_SOUND, POINTS_SOUND, NO_POINTS_SOUND, REVEAL_SOUND
+
+
+class LocalRect(pygame.Rect):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def resize(self, new_width, new_height):
+        return self.inflate(new_width - self.width, new_height - self.height)
+
+    def resize_ip(self, new_width, new_height):
+        self.inflate_ip(new_width - self.width, new_height - self.height)
+
+    def columns(self, n):
+        width = self.width / n
+        for i in range(n):
+            yield LocalRect(self.left + i*width, self.top, width, self.height)
+
+    def rows(self, n):
+        height = self.height / n
+        for i in range(n):
+            yield LocalRect(self.left, self.top + i*height, self.width, height)
+
+    def split_h(self, width):
+        if width < 0:
+            return (
+                LocalRect(self.left, self.top, self.width + width, self.height),
+                LocalRect(self.left + (self.width + width), self.top, -width, self.height)
+            )
+        else:
+            return (
+                LocalRect(self.left, self.top, width, self.height),
+                LocalRect(self.left + width, self.top, self.width-width, self.height)
+            )
 
 
 class FastMoneyView(PygameView):
     def __init__(self, model, surface):
         super().__init__(model, surface)
 
-    def draw_text(self, text, x, y, height, width=None, font_name="fonts/NimbusSans-Regular.otf"):
-        font = pygame.font.Font(font_name, int(self.UNIT * height))
+    def draw_text(self, text, rect, font_name="fonts/NimbusSans-Regular.otf"):
+        font = pygame.font.Font(font_name, int(rect.height))
         shadow = font.render(text, True, "black")
         foreground = font.render(text, True, "white")
-        if width is not None and width * self.UNIT < shadow.get_width():
-            shadow = pygame.transform.scale(shadow, (width * self.UNIT, shadow.get_height()))
-            foreground = pygame.transform.scale(foreground, (width * self.UNIT, shadow.get_height()))
-        self.surface.blit(shadow, RectBuilder(self.surface, shadow.get_rect()).translate(x + 0.3, y + 0.3).unscaled_translate(0, (font.get_linesize() - font.get_height()) / 2).done())
-        self.surface.blit(foreground, RectBuilder(self.surface, foreground.get_rect()).translate(x, y).unscaled_translate(0, (font.get_linesize() - font.get_height()) / 2).done())
+        if rect.width < shadow.get_width():
+            shadow = pygame.transform.scale(shadow, (rect.width, shadow.get_height()))
+            foreground = pygame.transform.scale(foreground, (rect.width, shadow.get_height()))
+        tmp = rect.resize(foreground.get_width(), foreground.get_height()).move(0, (font.get_linesize() - font.get_height()) / 2)
+        self.surface.blit(shadow, tmp.move(int(self.UNIT*0.3), int(self.UNIT*0.3)))
+        self.surface.blit(foreground, tmp)
+
+    def draw_timer(self, timer_time):
+        tmp = LocalRect(self.surface.get_rect()).resize(15 * self.UNIT, 11 * self.UNIT).move(0, -25 * self.UNIT)
+
+        pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR, tmp,0, int(self.UNIT))
+        self.draw_text(str(timer_time), tmp)
+
+    def draw_shadow_box(self, rect):
+        pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR, rect.move(int(self.UNIT / 4), int(self.UNIT / 4)), 0, int(self.UNIT))
+        pygame.draw.rect(self.surface, 'black', rect, 0, int(self.UNIT))
 
     def draw(self):
         self.draw_background()
 
-        pygame.draw.rect(self.surface, BORDER_COLOUR, RectBuilder(self.surface).size(88, 66).done(),
-                         int(self.UNIT), int(self.UNIT))
+        pygame.draw.rect(self.surface, BORDER_COLOUR, LocalRect(self.surface.get_rect()).resize(88 * self.UNIT, 66 * self.UNIT), int(self.UNIT), int(self.UNIT))
 
-        #print(self.model.get_timer_duration(), self.model.get_timer_end_time(), self.model.get_timer_start())
         if self.model.get_timer_start():
             self.model.set_timer_end_time(pygame.time.get_ticks() + 1000 * self.model.get_timer_duration())
             self.model.set_timer_start(False)
@@ -42,9 +82,8 @@ class FastMoneyView(PygameView):
                 timer_time = int((self.model.get_timer_end_time() - pygame.time.get_ticks())/1000)
         else:
             timer_time = self.model.get_timer_duration()
-        pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR, RectBuilder(self.surface).size(15, 11).translate(0, -25).done(),
-                         0, int(self.UNIT))
-        self.draw_text(str(timer_time), 0, -25, 10)
+
+        self.draw_timer(timer_time)
 
         if self.model.get_play_duplicate_sound():
             self.model.set_play_duplicate_sound(False)
@@ -62,29 +101,30 @@ class FastMoneyView(PygameView):
             self.model.set_play_no_points_sound(False)
             NO_POINTS_SOUND.play()
 
+        answer_grid = LocalRect(self.surface.get_rect()).resize(83 * self.UNIT, 39 * self.UNIT).move(0, 1 * self.UNIT)
         total_score = 0
-        for col in range(2):
-            for row in range(5):
-                index = col * 5 + row
-                x = 42 * (col - 0.5)
-                y = 8 * (row - 2.5) + 5
-                pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR, RectBuilder(self.surface).size(33, 7).translate(x + 0.25 - 4, y + 0.25).done(), 0, int(self.UNIT))
-                pygame.draw.rect(self.surface, 'black', RectBuilder(self.surface).size(33, 7).translate(x - 4, y).done(), 0, int(self.UNIT))
+        index = 0
+        for column in answer_grid.columns(2):
+            for cell in column.rows(5):
+                answer_rect, score_rect = cell.inflate(-self.UNIT, 0).split_h(-8*self.UNIT)
+
+                self.draw_shadow_box(answer_rect.inflate(int(-self.UNIT / 2), int(-self.UNIT / 2)))
                 if self.model.get_answer(index) is not None:
-                    self.draw_text(self.model.get_answer(index).upper(), x - 4, y, 6, width=32)
+                    self.draw_text(self.model.get_answer(index).upper(), answer_rect.inflate(int(-self.UNIT), int(-self.UNIT)))
 
-                pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR, RectBuilder(self.surface).size(7, 7).translate(x + 0.25 + 16.5, y + 0.25).done(), 0, int(self.UNIT))
-                pygame.draw.rect(self.surface, 'black', RectBuilder(self.surface).size(7, 7).translate(x + 16.5, y).done(), 0, int(self.UNIT))
+                self.draw_shadow_box(score_rect.inflate(int(-self.UNIT / 2), int(-self.UNIT / 2)))
                 if self.model.get_score(index) is not None:
-                    self.draw_text(str(self.model.get_score(index)), x + 16.5, y, 6)
+                    self.draw_text(str(self.model.get_score(index)), score_rect.inflate(int(-self.UNIT), int(-self.UNIT)))
                     total_score += self.model.get_score(index)
-        x = -10
-        y = 26
-        pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR, RectBuilder(self.surface).size(50, 7).translate(x,y).done(), 0, int(self.UNIT))
-        pygame.draw.rect(self.surface, 'black', RectBuilder(self.surface).size(50, 7).translate(x-0.25,y-0.25).done(), 0, int(self.UNIT))
-        self.draw_text('GRAND TOTAL', x-0.25,y-0.25, 7)
 
-        x += 31
-        pygame.draw.rect(self.surface, TEXT_BACKGROUND_COLOUR, RectBuilder(self.surface).size(11, 7).translate(x,y).done(), 0, int(self.UNIT))
-        pygame.draw.rect(self.surface, 'black', RectBuilder(self.surface).size(11, 7).translate(x-0.25,y-0.25).done(), 0, int(self.UNIT))
-        self.draw_text(str(total_score), x - 0.25, y - 0.25, 7)
+                index += 1
+
+        grand_total_rect = LocalRect(self.surface.get_rect()).resize(62 * self.UNIT, 8 * self.UNIT).move(0, 26 * self.UNIT)
+        gt_label_rect, gt_score_rect = grand_total_rect.split_h(-11*self.UNIT)
+
+        self.draw_shadow_box(gt_label_rect.inflate(int(-self.UNIT / 2), int(-self.UNIT / 2)))
+        self.draw_text("GRAND TOTAL", gt_label_rect.inflate(int(-self.UNIT), int(-self.UNIT)))
+
+        self.draw_shadow_box(gt_score_rect.inflate(int(-self.UNIT / 2), int(-self.UNIT / 2)))
+        self.draw_text(str(total_score), gt_score_rect.inflate(int(-self.UNIT), int(-self.UNIT)))
+
