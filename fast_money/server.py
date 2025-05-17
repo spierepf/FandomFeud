@@ -32,8 +32,8 @@ if FULLSCREEN:
     size_x = infoObject.current_w
     size_y = infoObject.current_h
 else:
-    size_x = 1920
-    size_y = 1080
+    size_x = 1024
+    size_y = 768
     SCREEN = pygame.display.set_mode([size_x, size_y])
 
 # Run until the user asks to quit
