@@ -34,15 +34,17 @@ wheels = [
 
 [[package]]
 name = "cython"
-version = "3.1.0"
+version = "3.1.4"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/cf/f7/db37a613aec5abcd51c8000a386a701ac32e94659aa03fa69c3e5c19b149/cython-3.1.0.tar.gz", hash = "sha256:1097dd60d43ad0fff614a57524bfd531b35c13a907d13bee2cc2ec152e6bf4a1", size = 3181017, upload-time = "2025-05-08T20:25:36.12Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a7/f6/d762df1f436a0618455d37f4e4c4872a7cd0dcfc8dec3022ee99e4389c69/cython-3.1.4.tar.gz", hash = "sha256:9aefefe831331e2d66ab31799814eae4d0f8a2d246cbaaaa14d1be29ef777683", size = 3190778, upload-time = "2025-09-16T07:20:33.531Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e9/64/ae1d8848550ec3975634fcf189ccc85e73c3b9f76369dd85c484f2f8f1c3/cython-3.1.0-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:8f8c4753f6b926046c0cdf6037ba8560f6677730bf0ab9c1db4e0163b4bb30f9", size = 3012737, upload-time = "2025-05-08T21:21:06.024Z" },
-    { url = "https://files.pythonhosted.org/packages/cc/e6/c8fe5e71b4272a1b5683a006bfe4bfeb5e2691c6603b44d18eb57772f626/cython-3.1.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:db8e15c8eeee529468eab08528c9bf714a94354b34375be6c0c110f6012a4768", size = 2843774, upload-time = "2025-05-08T21:21:08.112Z" },
-    { url = "https://files.pythonhosted.org/packages/2a/8f/47cdebf325a026963fe0e4f1a6e0b02304e1797863186c552e242be78861/cython-3.1.0-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:539828d14fbd95eff135e8dc9e93012f5b018657868f15a69cb475b8784efb9a", size = 2996710, upload-time = "2025-05-08T21:21:29.895Z" },
-    { url = "https://files.pythonhosted.org/packages/f3/5a/6eee7f38a77b7d533f59f3978af90b4a0958ff63a6191f9ae34e94bee982/cython-3.1.0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:fd0003171ad84d4812fdb1eb9a4f678ed027e75fbc2b7bef5db482621b72137a", size = 2829408, upload-time = "2025-05-08T21:21:32.086Z" },
-    { url = "https://files.pythonhosted.org/packages/9f/cc/221af506254978b119a2f6769b81b16bcfe09e0fb3fc5ab66e53e536d933/cython-3.1.0-py3-none-any.whl", hash = "sha256:4e460bdf1d8742ddf4914959842f2f23ca4934df97f864be799ddf1912acd0ab", size = 1227398, upload-time = "2025-05-08T20:25:31.368Z" },
+    { url = "https://files.pythonhosted.org/packages/f0/51/2939c739cfdc67ab94935a2c4fcc75638afd15e1954552655503a4112e92/cython-3.1.4-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:0d26af46505d0e54fe0f05e7ad089fd0eed8fa04f385f3ab88796f554467bcb9", size = 3062976, upload-time = "2025-09-16T07:22:20.517Z" },
+    { url = "https://files.pythonhosted.org/packages/eb/bd/a84de57fd01017bf5dba84a49aeee826db21112282bf8d76ab97567ee15d/cython-3.1.4-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:66ac8bb5068156c92359e3f0eefa138c177d59d1a2e8a89467881fa7d06aba3b", size = 2970701, upload-time = "2025-09-16T07:22:22.644Z" },
+    { url = "https://files.pythonhosted.org/packages/24/10/1acc34f4d2d14de38e2d3ab4795ad1c8f547cebc2d9e7477a49a063ba607/cython-3.1.4-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:ab549d0fc187804e0f14fc4759e4b5ad6485ffc01554b2f8b720cc44aeb929cd", size = 3051524, upload-time = "2025-09-16T07:22:40.607Z" },
+    { url = "https://files.pythonhosted.org/packages/04/85/8457a78e9b9017a4fb0289464066ff2e73c5885f1edb9c1b9faaa2877fe2/cython-3.1.4-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:52eae5d9bcc515441a436dcae2cbadfd00c5063d4d7809bd0178931690c06a76", size = 2958862, upload-time = "2025-09-16T07:22:42.646Z" },
+    { url = "https://files.pythonhosted.org/packages/38/85/f1380e8370b470b218e452ba3995555524e3652f026333e6bad6c68770b5/cython-3.1.4-cp314-cp314-macosx_10_13_x86_64.whl", hash = "sha256:c7258739d5560918741cb040bd85ba7cc2f09d868de9116a637e06714fec1f69", size = 3045864, upload-time = "2025-09-16T07:22:59.854Z" },
+    { url = "https://files.pythonhosted.org/packages/a3/31/54c7bc78df1e55ac311054cb2fd33908f23b8a6f350c30defeca416d8077/cython-3.1.4-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:b2d522ee8d3528035e247ee721fb40abe92e9ea852dc9e48802cec080d5de859", size = 2967105, upload-time = "2025-09-16T07:23:01.666Z" },
+    { url = "https://files.pythonhosted.org/packages/7c/24/f7351052cf9db771fe4f32fca47fd66e6d9b53d8613b17faf7d130a9d553/cython-3.1.4-py3-none-any.whl", hash = "sha256:d194d95e4fa029a3f6c7d46bdd16d973808c7ea4797586911fdb67cb98b1a2c6", size = 1227541, upload-time = "2025-09-16T07:20:29.595Z" },
 ]
 
 [[package]]
@@ -62,11 +64,11 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "pygame", specifier = ">=2.6.1" },
-    { name = "pygubu", specifier = ">=0.37" },
+    { name = "pygubu", specifier = ">=0.38.2" },
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "pygubu-designer", specifier = ">=0.41" }]
+dev = [{ name = "pygubu-designer", specifier = ">=0.41.4" }]
 
 [[package]]
 name = "mako"
@@ -120,11 +122,11 @@ wheels = [
 
 [[package]]
 name = "pycodestyle"
-version = "2.13.0"
+version = "2.14.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/04/6e/1f4a62078e4d95d82367f24e685aef3a672abfd27d1a868068fed4ed2254/pycodestyle-2.13.0.tar.gz", hash = "sha256:c8415bf09abe81d9c7f872502a6eee881fbe85d8763dd5b9924bb0a01d67efae", size = 39312, upload-time = "2025-03-29T17:33:30.669Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/11/e0/abfd2a0d2efe47670df87f3e3a0e2edda42f055053c85361f19c0e2c1ca8/pycodestyle-2.14.0.tar.gz", hash = "sha256:c4b5b517d278089ff9d0abdec919cd97262a3367449ea1c8b49b91529167b783", size = 39472, upload-time = "2025-06-20T18:49:48.75Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/07/be/b00116df1bfb3e0bb5b45e29d604799f7b91dd861637e4d448b4e09e6a3e/pycodestyle-2.13.0-py2.py3-none-any.whl", hash = "sha256:35863c5974a271c7a726ed228a14a4f6daf49df369d8c50cd9a6f58a5e143ba9", size = 31424, upload-time = "2025-03-29T17:33:29.405Z" },
+    { url = "https://files.pythonhosted.org/packages/d7/27/a58ddaf8c588a3ef080db9d0b7e0b97215cee3a45df74f3a94dbbf5c893a/pycodestyle-2.14.0-py2.py3-none-any.whl", hash = "sha256:dd6bf7cb4ee77f8e016f9c8e74a35ddd9f67e1d5fd4184d86c3b98e07099f42d", size = 31594, upload-time = "2025-06-20T18:49:47.491Z" },
 ]
 
 [[package]]
@@ -151,16 +153,16 @@ wheels = [
 
 [[package]]
 name = "pygubu"
-version = "0.37"
+version = "0.38.2"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c3/54/a03fcefe46c32e97ce1df1cc52f76ece3b7d71c6267d1c72efcbe7ced994/pygubu-0.37.tar.gz", hash = "sha256:18d0ffbcb0b3fc7b722972886bc748f9bd8550323dfd6c8223943562a3845988", size = 169327, upload-time = "2025-03-22T05:43:33Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/6d/5f/04e69b8bd10e51e0dfada16dc10621ef8058a2c3c4ccb564d3d80160e526/pygubu-0.38.2.tar.gz", hash = "sha256:7e33eb566dd1a1e198185921b798c9ca44f7646f7b5673e94cad1c996b595a1c", size = 169742, upload-time = "2025-07-26T00:20:39.359Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/12/8a/b469e7d702bd32beaf6b263dd7130510a390349f7067e61347ee3fa254c0/pygubu-0.37-py3-none-any.whl", hash = "sha256:be1dae48b24c1f642250a19f07e32801da393bb9a249cf51792ac0f570327f56", size = 213307, upload-time = "2025-03-22T05:43:30.531Z" },
+    { url = "https://files.pythonhosted.org/packages/21/e7/93c27b69c981fde98b17f35d169cb556f7dc78623813e15805442f92e2a5/pygubu-0.38.2-py3-none-any.whl", hash = "sha256:31b5aca79c904e4af245d9fb52cd0516d3549dd6a0dbeb374533c9f5057b18ad", size = 214642, upload-time = "2025-07-26T00:20:37.225Z" },
 ]
 
 [[package]]
 name = "pygubu-designer"
-version = "0.41"
+version = "0.41.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "appdirs" },
@@ -170,34 +172,38 @@ dependencies = [
     { name = "pygubu" },
     { name = "screeninfo" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/1d/3c/324f66c4984372f31a9e47a50ada77d7955062940174246a176abfbf3ea5/pygubu_designer-0.41.tar.gz", hash = "sha256:11c36ec2ed3ffbc11926fa89ecde02ce81bdba09aead34520042d58e1937a996", size = 1003262, upload-time = "2025-03-22T05:43:53.038Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f8/03/3cfcec06dfaf72bd038f2e53512e0ce50b925a3ed1112a5da02095dadf70/pygubu_designer-0.41.4.tar.gz", hash = "sha256:a4c306edcd61f0c60ea44308142426161dcd07d817d6d8f2204930ca8eed3d9e", size = 1002929, upload-time = "2025-07-30T19:30:17.584Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c4/c2/5def6d6fb3f84406b4c77f80cf56a0c0af803b02cb9a53a5ec304d215db8/pygubu_designer-0.41-py3-none-any.whl", hash = "sha256:819cf69d3248c321a0a77574ffdaa571d5b4c20d0d7845fb07b4849b3b6c48e6", size = 423830, upload-time = "2025-03-22T05:43:47.148Z" },
+    { url = "https://files.pythonhosted.org/packages/ba/4b/0176675e1ccb851597bdd906f21480aff608818cecbf95c27118faf9fef3/pygubu_designer-0.41.4-py3-none-any.whl", hash = "sha256:81bf783204b8b6ca4259139aafcd1f6135f1b8b7034ee8c5773eb42f3d876411", size = 425617, upload-time = "2025-07-30T19:30:13.04Z" },
 ]
 
 [[package]]
 name = "pyobjc-core"
-version = "11.0"
+version = "11.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/5c/94/a111239b98260869780a5767e5d74bfd3a8c13a40457f479c28dcd91f89d/pyobjc_core-11.0.tar.gz", hash = "sha256:63bced211cb8a8fb5c8ff46473603da30e51112861bd02c438fbbbc8578d9a70", size = 994931, upload-time = "2025-01-14T19:02:13.938Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e8/e9/0b85c81e2b441267bca707b5d89f56c2f02578ef8f3eafddf0e0c0b8848c/pyobjc_core-11.1.tar.gz", hash = "sha256:b63d4d90c5df7e762f34739b39cc55bc63dbcf9fb2fb3f2671e528488c7a87fe", size = 974602, upload-time = "2025-06-14T20:56:34.189Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/56/ce/bf3ff9a9347721a398c3dfb83e29b43fb166b7ef590f3f7b7ddcd283df39/pyobjc_core-11.0-cp312-cp312-macosx_10_13_universal2.whl", hash = "sha256:a03061d4955c62ddd7754224a80cdadfdf17b6b5f60df1d9169a3b1b02923f0b", size = 739750, upload-time = "2025-01-14T18:46:53.039Z" },
-    { url = "https://files.pythonhosted.org/packages/72/16/0c468e73dbecb821e3da8819236fe832dfc53eb5f66a11775b055a7589ea/pyobjc_core-11.0-cp313-cp313-macosx_10_13_universal2.whl", hash = "sha256:c338c1deb7ab2e9436d4175d1127da2eeed4a1b564b3d83b9f3ae4844ba97e86", size = 743900, upload-time = "2025-01-14T18:46:54.654Z" },
-    { url = "https://files.pythonhosted.org/packages/f3/88/cecec88fd51f62a6cd7775cc4fb6bfde16652f97df88d28c84fb77ca0c18/pyobjc_core-11.0-cp313-cp313t-macosx_10_13_universal2.whl", hash = "sha256:b4e9dc4296110f251a4033ff3f40320b35873ea7f876bd29a1c9705bb5e08c59", size = 791905, upload-time = "2025-01-14T18:46:56.473Z" },
+    { url = "https://files.pythonhosted.org/packages/c0/09/e83228e878e73bf756749939f906a872da54488f18d75658afa7f1abbab1/pyobjc_core-11.1-cp312-cp312-macosx_10_13_universal2.whl", hash = "sha256:765b97dea6b87ec4612b3212258024d8496ea23517c95a1c5f0735f96b7fd529", size = 677985, upload-time = "2025-06-14T20:44:48.375Z" },
+    { url = "https://files.pythonhosted.org/packages/c5/24/12e4e2dae5f85fd0c0b696404ed3374ea6ca398e7db886d4f1322eb30799/pyobjc_core-11.1-cp313-cp313-macosx_10_13_universal2.whl", hash = "sha256:18986f83998fbd5d3f56d8a8428b2f3e0754fd15cef3ef786ca0d29619024f2c", size = 676431, upload-time = "2025-06-14T20:44:49.908Z" },
+    { url = "https://files.pythonhosted.org/packages/f7/79/031492497624de4c728f1857181b06ce8c56444db4d49418fa459cba217c/pyobjc_core-11.1-cp313-cp313t-macosx_10_13_universal2.whl", hash = "sha256:8849e78cfe6595c4911fbba29683decfb0bf57a350aed8a43316976ba6f659d2", size = 719330, upload-time = "2025-06-14T20:44:51.621Z" },
+    { url = "https://files.pythonhosted.org/packages/ed/7d/6169f16a0c7ec15b9381f8bf33872baf912de2ef68d96c798ca4c6ee641f/pyobjc_core-11.1-cp314-cp314-macosx_11_0_universal2.whl", hash = "sha256:8cb9ed17a8d84a312a6e8b665dd22393d48336ea1d8277e7ad20c19a38edf731", size = 667203, upload-time = "2025-06-14T20:44:53.262Z" },
+    { url = "https://files.pythonhosted.org/packages/49/0f/f5ab2b0e57430a3bec9a62b6153c0e79c05a30d77b564efdb9f9446eeac5/pyobjc_core-11.1-cp314-cp314t-macosx_11_0_universal2.whl", hash = "sha256:f2455683e807f8541f0d83fbba0f5d9a46128ab0d5cc83ea208f0bec759b7f96", size = 708807, upload-time = "2025-06-14T20:44:54.851Z" },
 ]
 
 [[package]]
 name = "pyobjc-framework-cocoa"
-version = "11.0"
+version = "11.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pyobjc-core" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c5/32/53809096ad5fc3e7a2c5ddea642590a5f2cb5b81d0ad6ea67fdb2263d9f9/pyobjc_framework_cocoa-11.0.tar.gz", hash = "sha256:00346a8cb81ad7b017b32ff7bf596000f9faa905807b1bd234644ebd47f692c5", size = 6173848, upload-time = "2025-01-14T19:03:00.125Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/4b/c5/7a866d24bc026f79239b74d05e2cf3088b03263da66d53d1b4cf5207f5ae/pyobjc_framework_cocoa-11.1.tar.gz", hash = "sha256:87df76b9b73e7ca699a828ff112564b59251bb9bbe72e610e670a4dc9940d038", size = 5565335, upload-time = "2025-06-14T20:56:59.683Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5b/8d/0e2558447c26b3ba64f7c9776a5a6c9d2ae8abf9d34308b174ae0934402e/pyobjc_framework_Cocoa-11.0-cp312-cp312-macosx_10_13_universal2.whl", hash = "sha256:280a577b83c68175a28b2b7138d1d2d3111f2b2b66c30e86f81a19c2b02eae71", size = 385811, upload-time = "2025-01-14T18:49:29.259Z" },
-    { url = "https://files.pythonhosted.org/packages/1d/a5/609281a7e89efefbef9db1d8fe66bc0458c3b4e74e2227c644f9c18926fa/pyobjc_framework_Cocoa-11.0-cp313-cp313-macosx_10_13_universal2.whl", hash = "sha256:15b2bd977ed340074f930f1330f03d42912d5882b697d78bd06f8ebe263ef92e", size = 385889, upload-time = "2025-01-14T18:49:30.605Z" },
-    { url = "https://files.pythonhosted.org/packages/93/f6/2d5a863673ef7b85a3cba875c43e6c495fb1307427a6801001ae94bb5e54/pyobjc_framework_Cocoa-11.0-cp313-cp313t-macosx_10_13_universal2.whl", hash = "sha256:5750001db544e67f2b66f02067d8f0da96bb2ef71732bde104f01b8628f9d7ea", size = 389831, upload-time = "2025-01-14T18:49:31.963Z" },
+    { url = "https://files.pythonhosted.org/packages/68/da/41c0f7edc92ead461cced7e67813e27fa17da3c5da428afdb4086c69d7ba/pyobjc_framework_cocoa-11.1-cp312-cp312-macosx_10_13_universal2.whl", hash = "sha256:806de56f06dfba8f301a244cce289d54877c36b4b19818e3b53150eb7c2424d0", size = 388983, upload-time = "2025-06-14T20:46:52.591Z" },
+    { url = "https://files.pythonhosted.org/packages/4e/0b/a01477cde2a040f97e226f3e15e5ffd1268fcb6d1d664885a95ba592eca9/pyobjc_framework_cocoa-11.1-cp313-cp313-macosx_10_13_universal2.whl", hash = "sha256:54e93e1d9b0fc41c032582a6f0834befe1d418d73893968f3f450281b11603da", size = 389049, upload-time = "2025-06-14T20:46:53.757Z" },
+    { url = "https://files.pythonhosted.org/packages/bc/e6/64cf2661f6ab7c124d0486ec6d1d01a9bb2838a0d2a46006457d8c5e6845/pyobjc_framework_cocoa-11.1-cp313-cp313t-macosx_10_13_universal2.whl", hash = "sha256:fd5245ee1997d93e78b72703be1289d75d88ff6490af94462b564892e9266350", size = 393110, upload-time = "2025-06-14T20:46:54.894Z" },
+    { url = "https://files.pythonhosted.org/packages/33/87/01e35c5a3c5bbdc93d5925366421e10835fcd7b23347b6c267df1b16d0b3/pyobjc_framework_cocoa-11.1-cp314-cp314-macosx_11_0_universal2.whl", hash = "sha256:aede53a1afc5433e1e7d66568cc52acceeb171b0a6005407a42e8e82580b4fc0", size = 392644, upload-time = "2025-06-14T20:46:56.503Z" },
+    { url = "https://files.pythonhosted.org/packages/c1/7c/54afe9ffee547c41e1161691e72067a37ed27466ac71c089bfdcd07ca70d/pyobjc_framework_cocoa-11.1-cp314-cp314t-macosx_11_0_universal2.whl", hash = "sha256:1b5de4e1757bb65689d6dc1f8d8717de9ec8587eb0c4831c134f13aba29f9b71", size = 396742, upload-time = "2025-06-14T20:46:57.64Z" },
 ]
 
 [[package]]

@@ -6,10 +6,10 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "pygame>=2.6.1",
-    "pygubu>=0.37",
+    "pygubu>=0.38.2",
 ]
 
 [dependency-groups]
 dev = [
-    "pygubu-designer>=0.41",
+    "pygubu-designer>=0.41.4",
 ]
