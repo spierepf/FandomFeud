@@ -70,7 +70,7 @@ class ObjectBuilder:
 
     def add_label(self, text, object_id=None):
         object = self.initialize_object("ttk.Label", object_id)
-        ET.SubElement(object, "property", {"name": "font"}).text = "{Liberation Sans} 24 {}"
+        ET.SubElement(object, "property", {"name": "style"}).text = "primary.TLabel"
         ET.SubElement(object, "property", {"name": "text", "translatable": "yes"}).text = str(text)
         self.layout(object)
         return self

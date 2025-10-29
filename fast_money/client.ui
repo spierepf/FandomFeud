@@ -40,7 +40,7 @@
             </layout>
             <child>
               <object class="ttk.Label" id="object_1">
-                <property name="font">{Liberation Sans} 24 {}</property>
+                <property name="style">primary.TLabel</property>
                 <property name="text" translatable="yes">Host:</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -61,7 +61,7 @@
             </child>
             <child>
               <object class="ttk.Label" id="object_3">
-                <property name="font">{Liberation Sans} 24 {}</property>
+                <property name="style">primary.TLabel</property>
                 <property name="text" translatable="yes">Port:</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -109,7 +109,7 @@
                 </layout>
                 <child>
                   <object class="ttk.Label" id="object_6">
-                    <property name="font">{Liberation Sans} 24 {}</property>
+                    <property name="style">primary.TLabel</property>
                     <property name="text" translatable="yes">Duration</property>
                     <layout manager="grid">
                       <property name="column">0</property>

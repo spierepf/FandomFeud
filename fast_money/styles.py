@@ -39,6 +39,8 @@ def setup_ttk_styles(master=None):
 
     style = ttk.Style(master)
 
+    style.configure("primary.TLabel",
+                    font=my_font)
     style.configure("primary.TButton",
                     font=my_font)
     style.configure("primary.TRadiobutton",
