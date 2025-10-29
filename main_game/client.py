@@ -8,6 +8,7 @@ from tkinter import ttk, filedialog, messagebox
 import pygubu
 from clientui import ClientUI
 import logging
+import styles  # Styles definition module
 
 
 from os.path import dirname, abspath, join
@@ -21,8 +22,8 @@ logging.basicConfig(level=logging.INFO)
 
 
 class Client(ClientUI):
-    def __init__(self, master=None):
-        super().__init__(master)
+    def __init__(self, master=None, on_first_object_cb=None):
+        super().__init__(master, on_first_object_cb=styles.setup_ttk_styles)
         self.model = None
 
         self.builder.get_variable("round_multiplier_var").set(1)

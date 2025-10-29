@@ -70,12 +70,14 @@ class ObjectBuilder:
 
     def add_label(self, text, object_id=None):
         object = self.initialize_object("ttk.Label", object_id)
+        ET.SubElement(object, "property", {"name": "font"}).text = "{Liberation Sans} 24 {}"
         ET.SubElement(object, "property", {"name": "text", "translatable": "yes"}).text = str(text)
         self.layout(object)
         return self
 
     def add_entry(self, variable, text, justify=None, width=None, object_id=None):
         object = self.initialize_object("ttk.Entry", object_id)
+        ET.SubElement(object, "property", {"name": "font"}).text = "{Liberation Sans} 24 {}"
         if justify:
             ET.SubElement(object, "property", {"name": "justify"}).text = str(justify)
         ET.SubElement(object, "property", {"name": "text", "translatable": "yes"}).text = str(text)
@@ -88,6 +90,7 @@ class ObjectBuilder:
     def add_button(self, text, command, object_id=None):
         object = self.initialize_object("ttk.Button", object_id)
         ET.SubElement(object, "property", {"name": "command", "type": "command", "cbtype": "simple"}).text = str(command)
+        ET.SubElement(object, "property", {"name": "style"}).text = "primary.TButton"
         ET.SubElement(object, "property", {"name": "text", "translatable": "yes"}).text = str(text)
         self.layout(object)
         return self
@@ -95,6 +98,7 @@ class ObjectBuilder:
     def add_radiobutton(self, text, variable, value, object_id=None):
         object = self.initialize_object("ttk.Radiobutton", object_id)
         ET.SubElement(object, "property", {"name": "text", "translatable": "yes"}).text = str(text)
+        ET.SubElement(object, "property", {"name": "style"}).text = "primary.TRadiobutton"
         ET.SubElement(object, "property", {"name": "value"}).text = str(value)
         ET.SubElement(object, "property", {"name": "variable"}).text = str(variable)
         self.layout(object)
