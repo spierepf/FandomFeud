@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<interface version="1.4" author="PygubuDesigner 0.39.3">
+<interface version="1.4" author="PygubuDesigner 0.41.4">
   <project>
     <settings>
       <setting id="name">Client</setting>
@@ -12,12 +12,12 @@
       <setting id="output_dir" />
       <setting id="output_dir2" />
       <setting id="import_tkvariables">False</setting>
-      <setting id="use_ttk_styledefinition_file">False</setting>
+      <setting id="use_ttk_styledefinition_file">True</setting>
       <setting id="use_i18n">False</setting>
       <setting id="all_ids_attributes">False</setting>
       <setting id="generate_code_onsave">False</setting>
       <setting id="use_window_centering_code">False</setting>
-      <setting id="ttk_style_definition_file" />
+      <setting id="ttk_style_definition_file">styles.py</setting>
     </settings>
     <customwidgets />
   </project>
@@ -173,9 +173,9 @@
                 </layout>
                 <child>
                   <object class="ttk.Entry" id="object_11">
+                    <property name="justify">center</property>
                     <property name="text" translatable="yes">0</property>
                     <property name="textvariable">int:left_score_var</property>
-                    <property name="justify">center</property>
                     <layout manager="grid">
                       <property name="column">0</property>
                       <property name="row">0</property>
@@ -195,9 +195,9 @@
                 </child>
                 <child>
                   <object class="ttk.Entry" id="object_13">
+                    <property name="justify">center</property>
                     <property name="text" translatable="yes">0</property>
                     <property name="textvariable">int:pot_score_var</property>
-                    <property name="justify">center</property>
                     <layout manager="grid">
                       <property name="column">2</property>
                       <property name="row">0</property>
@@ -217,9 +217,9 @@
                 </child>
                 <child>
                   <object class="ttk.Entry" id="object_15">
+                    <property name="justify">center</property>
                     <property name="text" translatable="yes">0</property>
                     <property name="textvariable">int:right_score_var</property>
-                    <property name="justify">center</property>
                     <layout manager="grid">
                       <property name="column">4</property>
                       <property name="row">0</property>
