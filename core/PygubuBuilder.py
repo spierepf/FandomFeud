@@ -76,10 +76,10 @@ class ObjectBuilder:
 
     def add_entry(self, variable, text, justify=None, width=None, object_id=None):
         object = self.initialize_object("ttk.Entry", object_id)
-        ET.SubElement(object, "property", {"name": "text", "translatable": "yes"}).text = str(text)
-        ET.SubElement(object, "property", {"name": "textvariable"}).text = str(variable)
         if justify:
             ET.SubElement(object, "property", {"name": "justify"}).text = str(justify)
+        ET.SubElement(object, "property", {"name": "text", "translatable": "yes"}).text = str(text)
+        ET.SubElement(object, "property", {"name": "textvariable"}).text = str(variable)
         if width:
             ET.SubElement(object, "property", {"name": "width"}).text = str(width)
         self.layout(object)
@@ -124,7 +124,7 @@ class InterfaceBuilder:
         self.next_id = 0
 
     def go(self):
-        document = ET.Element("interface", {"version": "1.4", "author": "PygubuDesigner 0.39.3"})
+        document = ET.Element("interface", {"version": "1.4", "author": "PygubuDesigner 0.41.4"})
         project = ET.SubElement(document, "project")
         settings = ET.SubElement(project, "settings")
 
@@ -139,12 +139,12 @@ class InterfaceBuilder:
             "output_dir": "",
             "output_dir2": "",
             "import_tkvariables": "False",
-            "use_ttk_styledefinition_file": "False",
+            "use_ttk_styledefinition_file": "True",
             "use_i18n": "False",
             "all_ids_attributes": "False",
             "generate_code_onsave": "False",
             "use_window_centering_code": "False",
-            "ttk_style_definition_file": ""}.items():
+            "ttk_style_definition_file": "styles.py"}.items():
             attribute = ET.SubElement(settings, "setting", {"id": k})
             attribute.text = v
 
