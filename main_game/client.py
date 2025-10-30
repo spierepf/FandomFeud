@@ -121,13 +121,13 @@ class Client(ClientUI):
             answers = json.loads(load_file.read())['answers']
             for i in range(len(answers)):
                 answer_frame = ttk.Frame(answers_frame, name=f"answer_frame_{i}")
-                ttk.Label(answer_frame, text=answers[i][0], width=20).pack(side=tk.LEFT)
-                ttk.Label(answer_frame, text=answers[i][1], width=2).pack(side=tk.LEFT)
+                ttk.Label(answer_frame, text=answers[i][0], width=20, style="primary.TLabel").pack(side=tk.LEFT)
+                ttk.Label(answer_frame, text=answers[i][1], width=2, style="primary.TLabel").pack(side=tk.LEFT)
 
-                reveal_and_score_radiobutton = ttk.Radiobutton(answer_frame, text="Reveal and Score", variable=self.builder.get_variable("event_var"), value=f"reveal_and_score_{i}")
+                reveal_and_score_radiobutton = ttk.Radiobutton(answer_frame, text="Reveal and Score", style="primary.TRadiobutton", variable=self.builder.get_variable("event_var"), value=f"reveal_and_score_{i}")
                 reveal_and_score_radiobutton.pack(side=tk.LEFT)
 
-                reveal_only_radiobutton = ttk.Radiobutton(answer_frame, text="Reveal Only", variable=self.builder.get_variable("event_var"), value=f"reveal_only_{i}")
+                reveal_only_radiobutton = ttk.Radiobutton(answer_frame, text="Reveal Only", style="primary.TRadiobutton", variable=self.builder.get_variable("event_var"), value=f"reveal_only_{i}")
                 reveal_only_radiobutton.pack(side=tk.LEFT)
                 answer_frame.pack()
             self.model.begin_round(answers)
