@@ -53,6 +53,7 @@
                 <property name="font">{Liberation Sans} 24 {}</property>
                 <property name="text" translatable="yes">127.0.0.1</property>
                 <property name="textvariable">string:host_var</property>
+                <property name="width">10</property>
                 <layout manager="grid">
                   <property name="column">1</property>
                   <property name="row">0</property>
@@ -74,6 +75,7 @@
                 <property name="font">{Liberation Sans} 24 {}</property>
                 <property name="text" translatable="yes">8080</property>
                 <property name="textvariable">int:port_var</property>
+                <property name="width">10</property>
                 <layout manager="grid">
                   <property name="column">3</property>
                   <property name="row">0</property>
@@ -187,6 +189,7 @@
                     <property name="justify">center</property>
                     <property name="text" translatable="yes">0</property>
                     <property name="textvariable">int:left_score_var</property>
+                    <property name="width">5</property>
                     <layout manager="grid">
                       <property name="column">0</property>
                       <property name="row">0</property>
@@ -211,6 +214,7 @@
                     <property name="justify">center</property>
                     <property name="text" translatable="yes">0</property>
                     <property name="textvariable">int:pot_score_var</property>
+                    <property name="width">5</property>
                     <layout manager="grid">
                       <property name="column">2</property>
                       <property name="row">0</property>
@@ -235,6 +239,7 @@
                     <property name="justify">center</property>
                     <property name="text" translatable="yes">0</property>
                     <property name="textvariable">int:right_score_var</property>
+                    <property name="width">5</property>
                     <layout manager="grid">
                       <property name="column">4</property>
                       <property name="row">0</property>
