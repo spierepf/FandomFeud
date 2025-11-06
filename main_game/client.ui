@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<interface version="1.4" author="PygubuDesigner 0.39.3">
+<interface version="1.4" author="PygubuDesigner 0.41.4">
   <project>
     <settings>
       <setting id="name">Client</setting>
@@ -12,12 +12,12 @@
       <setting id="output_dir" />
       <setting id="output_dir2" />
       <setting id="import_tkvariables">False</setting>
-      <setting id="use_ttk_styledefinition_file">False</setting>
+      <setting id="use_ttk_styledefinition_file">True</setting>
       <setting id="use_i18n">False</setting>
       <setting id="all_ids_attributes">False</setting>
       <setting id="generate_code_onsave">False</setting>
       <setting id="use_window_centering_code">False</setting>
-      <setting id="ttk_style_definition_file" />
+      <setting id="ttk_style_definition_file">styles.py</setting>
     </settings>
     <customwidgets />
   </project>
@@ -40,6 +40,7 @@
             </layout>
             <child>
               <object class="ttk.Label" id="object_1">
+                <property name="style">primary.TLabel</property>
                 <property name="text" translatable="yes">Host:</property>
                 <layout manager="grid">
                   <property name="column">0</property>
@@ -49,8 +50,10 @@
             </child>
             <child>
               <object class="ttk.Entry" id="object_2">
+                <property name="font">{Liberation Sans} 24 {}</property>
                 <property name="text" translatable="yes">127.0.0.1</property>
                 <property name="textvariable">string:host_var</property>
+                <property name="width">10</property>
                 <layout manager="grid">
                   <property name="column">1</property>
                   <property name="row">0</property>
@@ -59,6 +62,7 @@
             </child>
             <child>
               <object class="ttk.Label" id="object_3">
+                <property name="style">primary.TLabel</property>
                 <property name="text" translatable="yes">Port:</property>
                 <layout manager="grid">
                   <property name="column">2</property>
@@ -68,8 +72,10 @@
             </child>
             <child>
               <object class="ttk.Entry" id="object_4">
+                <property name="font">{Liberation Sans} 24 {}</property>
                 <property name="text" translatable="yes">8080</property>
                 <property name="textvariable">int:port_var</property>
+                <property name="width">10</property>
                 <layout manager="grid">
                   <property name="column">3</property>
                   <property name="row">0</property>
@@ -79,6 +85,7 @@
             <child>
               <object class="ttk.Button" id="object_5">
                 <property name="command" type="command" cbtype="simple">connect_to_server</property>
+                <property name="style">primary.TButton</property>
                 <property name="text" translatable="yes">Connect</property>
                 <layout manager="grid">
                   <property name="column">4</property>
@@ -105,6 +112,7 @@
                 <child>
                   <object class="ttk.Button" id="object_6">
                     <property name="command" type="command" cbtype="simple">begin_round</property>
+                    <property name="style">primary.TButton</property>
                     <property name="text" translatable="yes">Begin Round</property>
                     <layout manager="pack">
                       <property name="side">top</property>
@@ -122,6 +130,7 @@
                 </layout>
                 <child>
                   <object class="ttk.Label" id="object_7">
+                    <property name="style">primary.TLabel</property>
                     <property name="text" translatable="yes">Round Multiplier</property>
                     <layout manager="grid">
                       <property name="column">0</property>
@@ -132,6 +141,7 @@
                 <child>
                   <object class="ttk.Radiobutton" id="object_8">
                     <property name="text" translatable="yes">Normal</property>
+                    <property name="style">primary.TRadiobutton</property>
                     <property name="value">1</property>
                     <property name="variable">int:round_multiplier_var</property>
                     <layout manager="grid">
@@ -143,6 +153,7 @@
                 <child>
                   <object class="ttk.Radiobutton" id="object_9">
                     <property name="text" translatable="yes">Double</property>
+                    <property name="style">primary.TRadiobutton</property>
                     <property name="value">2</property>
                     <property name="variable">int:round_multiplier_var</property>
                     <layout manager="grid">
@@ -154,6 +165,7 @@
                 <child>
                   <object class="ttk.Radiobutton" id="object_10">
                     <property name="text" translatable="yes">Triple</property>
+                    <property name="style">primary.TRadiobutton</property>
                     <property name="value">3</property>
                     <property name="variable">int:round_multiplier_var</property>
                     <layout manager="grid">
@@ -173,9 +185,11 @@
                 </layout>
                 <child>
                   <object class="ttk.Entry" id="object_11">
+                    <property name="font">{Liberation Sans} 24 {}</property>
+                    <property name="justify">center</property>
                     <property name="text" translatable="yes">0</property>
                     <property name="textvariable">int:left_score_var</property>
-                    <property name="justify">center</property>
+                    <property name="width">5</property>
                     <layout manager="grid">
                       <property name="column">0</property>
                       <property name="row">0</property>
@@ -185,6 +199,7 @@
                 <child>
                   <object class="ttk.Radiobutton" id="object_12">
                     <property name="text" translatable="yes">&lt;&lt;&lt;</property>
+                    <property name="style">primary.TRadiobutton</property>
                     <property name="value">award_pot_to_left</property>
                     <property name="variable">string:event_var</property>
                     <layout manager="grid">
@@ -195,9 +210,11 @@
                 </child>
                 <child>
                   <object class="ttk.Entry" id="object_13">
+                    <property name="font">{Liberation Sans} 24 {}</property>
+                    <property name="justify">center</property>
                     <property name="text" translatable="yes">0</property>
                     <property name="textvariable">int:pot_score_var</property>
-                    <property name="justify">center</property>
+                    <property name="width">5</property>
                     <layout manager="grid">
                       <property name="column">2</property>
                       <property name="row">0</property>
@@ -207,6 +224,7 @@
                 <child>
                   <object class="ttk.Radiobutton" id="object_14">
                     <property name="text" translatable="yes">&gt;&gt;&gt;</property>
+                    <property name="style">primary.TRadiobutton</property>
                     <property name="value">award_pot_to_right</property>
                     <property name="variable">string:event_var</property>
                     <layout manager="grid">
@@ -217,9 +235,11 @@
                 </child>
                 <child>
                   <object class="ttk.Entry" id="object_15">
+                    <property name="font">{Liberation Sans} 24 {}</property>
+                    <property name="justify">center</property>
                     <property name="text" translatable="yes">0</property>
                     <property name="textvariable">int:right_score_var</property>
-                    <property name="justify">center</property>
+                    <property name="width">5</property>
                     <layout manager="grid">
                       <property name="column">4</property>
                       <property name="row">0</property>
@@ -247,6 +267,7 @@
                 <child>
                   <object class="ttk.Radiobutton" id="object_16">
                     <property name="text" translatable="yes">Strike 1</property>
+                    <property name="style">primary.TRadiobutton</property>
                     <property name="value">strike_1</property>
                     <property name="variable">string:event_var</property>
                     <layout manager="grid">
@@ -258,6 +279,7 @@
                 <child>
                   <object class="ttk.Radiobutton" id="object_17">
                     <property name="text" translatable="yes">Strike 2</property>
+                    <property name="style">primary.TRadiobutton</property>
                     <property name="value">strike_2</property>
                     <property name="variable">string:event_var</property>
                     <layout manager="grid">
@@ -269,6 +291,7 @@
                 <child>
                   <object class="ttk.Radiobutton" id="object_18">
                     <property name="text" translatable="yes">Strike 3</property>
+                    <property name="style">primary.TRadiobutton</property>
                     <property name="value">strike_3</property>
                     <property name="variable">string:event_var</property>
                     <layout manager="grid">
@@ -289,6 +312,7 @@
                 <child>
                   <object class="ttk.Button" id="object_19">
                     <property name="command" type="command" cbtype="simple">commit</property>
+                    <property name="style">primary.TButton</property>
                     <property name="text" translatable="yes">Commit</property>
                     <layout manager="pack">
                       <property name="side">top</property>

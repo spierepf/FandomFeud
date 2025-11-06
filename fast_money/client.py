@@ -17,11 +17,12 @@ from core.side import Side
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
+import styles  # Styles definition module
 
 
 class Client(ClientUI):
-    def __init__(self, master=None):
-        super().__init__(master)
+    def __init__(self, master=None, on_first_object_cb=None):
+        super().__init__(master, on_first_object_cb=styles.setup_ttk_styles)
         self.model = None
         self.event_var = self.builder.get_variable("event_var")
         self.disable_all(self.builder.get_object("round_frame"))
